@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Dancing+Script:wght@700&family=Inter&family=Italianno&family=Satisfy&display=swap" rel="stylesheet">
+</head>
+<style>body{background-color: #D2B48C;
+
+
+}</style>
+</style>
+<body>
+    <nav class="navbar navbar-expand-sm shadow-sm bg-navbar-"style="background-color:#E5D3B3">
+        <!-- Brand/logo -->
+        <a class="navbar-brand"style="font-family: 'Italianno', cursive; color: #d48439;" href="./index.html">NIDS CROCHET</a>
+      
+     
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="bi bi-list"></span>
+        </button>
+      
+        <!-- Links -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="./bikini.html" style="color:black;">Bikini</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./top.html" style="color:black;">Top</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./crochetset.html" style="color:black;">Crochet set</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./babyitem.html" style="color:black;">Baby item</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./contactus.html" style="color:black;">Contact us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./aboutus.html" style="color:black;">About us</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="./shoppingcart.html" style="color:black;"><i class="bi bi-cart-fill"></i></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./login.html" style="color:black;"><i class="bi bi-person-fill"></i></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    <div class="container my-1">
+    <h2 style="font-family: 'Inter', sans-serif;">Shopping Cart</h2>
+    <div id="cartItemsContainer">
+        <!--  the item in the Cart will be displayed here -->
+    </div>
+    <div id="cartTotal">
+        <h4 >Total:</h4>
+        <p id="totalAmount">Rs. 0</p>
+    </div>
+    <a href="./checkout.html">
+    <button type="button" style="color:#FFD2D2 ; background-color: black;" class="btn btn-lg px-4 me-md-2 fw-bold">Proceed to Checkout</button>
+  </a>
+  </div>
+    <script>
+        const cartItemsContainer = document.getElementById("cartItemsContainer");
+        const cartTotalAmount = document.getElementById("totalAmount");
+        const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+        function updateCart() {
+            cartItemsContainer.innerHTML = "";
+            let total = 0;
+
+            cartItems.forEach((item, index) => {
+                const cartItem = document.createElement("div");
+
+                // Checking if item.price added is a valid number or not
+                if (typeof item.price === "number") {
+                    const subtotal = item.quantity * item.price;
+                    total += subtotal;
+
+                    cartItem.style.display = "flex";
+
+                    cartItem.innerHTML = `
+                    <img src="${item.imageUrl}" alt="${item.name}" width="100" height="100" style="margin-right: 12px;">
+                    <div class="product-details">
+                        <p>${item.name}</p>
+                        <p>Price: Rs. ${item.price}</p>
+                        <p>Size: ${item.size} - Quantity: ${item.quantity} - Color: ${item.color}</p>
+                        <p>Subtotal: Rs. ${subtotal}</p>
+                        <button class="delete-button" data-index="${index}">Delete</button>
+                    </div>
+                `;
+                cartItem.style.marginBottom = "20px";
+                    cartItemsContainer.appendChild(cartItem);
+                } else {
+                    // Handle invalid item.price
+                    console.error(`Invalid price for item at index ${index}`);
+                }
+            });
+
+            cartTotalAmount.textContent = `Total: Rs. ${total}`;
+            setupDeleteButtons(); 
+        }
+
+        function setupDeleteButtons() {
+            const deleteButtons = document.querySelectorAll(".delete-button");
+            deleteButtons.forEach(button => {
+                button.addEventListener("click", function() {
+                    const index = parseInt(button.getAttribute("data-index"));
+                    cartItems.splice(index, 1);
+                    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+                    updateCart(); // it will update the cart display after removing an item
+                });
+            });
+        }
+
+        updateCart(); // upadte the cart
+    </script>
+    <div class="container my-1">
+    <a href="./index.html" style="font-family: 'Italianno', cursive; font-size: xx-large; color: #3a220a;"> Continue Shopping</a>
+     <p class="float-end"><a href="#" class="footer-link"style="color: #3F2305">Go back to the top</a></p>
+     </div>
+</body>
+</html>

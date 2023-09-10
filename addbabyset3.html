@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nids crochet</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Dancing+Script:wght@700&family=Inter&family=Italianno&family=Satisfy&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #D2B48C;
+        }
+
+        .product {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border: 1px solid #ccc;
+            margin: 20px;
+        }
+
+        .product-details {
+            flex: 1;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .quantity-button {
+            margin: 0 5px;
+            cursor: pointer;
+            padding: 3px 8px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+   
+    <nav class="navbar navbar-expand-sm shadow-sm bg-navbar-"style="background-color:#E5D3B3">
+        <!-- Brand/logo -->
+        <a class="navbar-brand"style="font-family: 'Italianno', cursive; color: #d48439;" href="./index.html">NIDS CROCHET</a>
+      
+     
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="bi bi-list"></span>
+        </button>
+      
+        <!-- Links -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="./bikini.html" style="color:black;">Bikini</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./top.html" style="color:black;">Top</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./crochetset.html" style="color:black;">Crochet set</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./babyitem.html" style="color:black;">Baby item</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./contactus.html" style="color:black;">Contact us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./aboutus.html" style="color:black;">About us</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="./shoppingcart.html" style="color:black;"><i class="bi bi-cart-fill"></i></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./login.html" style="color:black;"><i class="bi bi-person-fill"></i></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    <main>
+        <div class="container my-1">
+            <div class="d-flex justify-content-center align-items-center mt-5">
+                <div class="card" style="width: 25rem; height: 25rem;">
+                    <img class="card-img-top" src="./images/mickeymouse set.JPG" alt="mickeymouseset">
+                </div>
+                <div class="product-details ml-5">
+                    <h5> Mickey Mouse Set </h5>
+                    <p style="color: #595555;">Price: Rs. 700</p>
+                    <label for="color" style="color: rgb(1, 1, 1);">Select Color:</label>
+                    <select id="color" style="background-color: black; color: rgb(248,64,64)" onchange="changeTextColor()">
+                        <option value="red" style="color: rgb(248, 64, 64);">Red</option>
+                        <option value="brown" style="color: rgb(234, 189, 92);">Brown</option>
+                        <option value="pink" style="color: rgb(252, 171, 230);">Pink</option>
+                        <option value="orange" style="color: rgb(235, 148, 9);">Orange</option>
+                    </select>
+
+                    <label for="size">Select Size:</label>
+                    <select id="size" style="background-color: black; color: white; border: 1px solid white; padding: 5px;">
+                        <option value="xsmall" style="background-color: black; color: #FFD2D2;">Xs</option>
+                        <option value="small" style="background-color: black; color: #FFD2D2;">S</option>
+                        <option value="medium" style="background-color: black; color: #FFD2D2;">M</option>
+                        <option value="large" style="background-color: black; color: #FFD2D2;">L</option>
+                    </select>
+                    <div class="quantity-control mt-3">
+                        <button class="quantity-button" style="border-top-left-radius: 4px; color: pink; border-bottom-left-radius: 4px; color: black;" id="decrease-quantity">-</button>
+                        <span id="quantity" style="margin: 0 10px; font-weight: bold;">1</span>
+                        <button class="quantity-button" style="border-top-right-radius: 4px; border-bottom-right-radius: 4px;" id="increase-quantity">+</button>
+                    </div>
+                    <br>
+                    <a href="./shoppingcart.html">
+                    <button type="button" style="color:#FFD2D2 ; background-color: black;" class="btn btn-lg px-4 me-md-2 fw-bold" id="add-to-cart">Add to cart</button>
+                </div>
+            </div>
+          </a>
+        </div>
+        <script>
+            const decreaseQuantityButton = document.getElementById("decrease-quantity");
+            const increaseQuantityButton = document.getElementById("increase-quantity");
+            const quantitySpan = document.getElementById("quantity");
+            const addToCartButton = document.getElementById("add-to-cart");
+  
+            let currentQuantity = 1;
+  
+            decreaseQuantityButton.addEventListener("click", function() {
+                if (currentQuantity > 1) {
+                    currentQuantity--;
+                    updateQuantityDisplay();
+                }
+            });
+  
+            increaseQuantityButton.addEventListener("click", function() {
+                currentQuantity++;
+                updateQuantityDisplay();
+            });
+
+            function changeTextColor() {
+    var select = document.getElementById("color");
+    var selectedOption = select.options[select.selectedIndex];
+    
+    var textColor = selectedOption.style.color;
+    select.style.color = textColor;
+}
+
+            function updateQuantityDisplay() {
+                quantitySpan.textContent = currentQuantity;
+            }
+  
+            addToCartButton.addEventListener("click", function() {
+                const color = document.getElementById("color").value;
+              const size = document.getElementById("size").value;
+              const imageUrl ="images/mickeymouse set.JPG";
+                const productInfo = {
+                    color: color,
+                  size: size,
+                  imageUrl: imageUrl,
+                    name: "Mickey Mouse Set",
+                    price: 700,
+                    quantity: currentQuantity 
+                };
+                const image = document.createElement("img");
+  image.src ="images/mickeymouse set.JPG"; 
+  image.alt = "mickeymouseset"; 
+
+ 
+  const cartItem = document.createElement("div"); 
+  cartItem.appendChild(image); 
+
+                const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+                cartItems.push(productInfo);
+                localStorage.setItem("cartItems", JSON.stringify(cartItems));
+
+                alert("Item added to cart!");
+            });
+        </script>
+    </main>
+      <br>
+      <footer class="container">
+        <p class="float-end"><a href="#" class="footer-link"style="color: #3F2305">Go back to the top</a></p>
+        <p> 2020–2023 NIDS, CROCHET. · <a href="#" class="footer-link"style="color:black">Privacy Policy</a> · <a href="#" class="footer-link"style="color:#000000">Terms of Use</a></p>
+        <a class="link-body-emphasis" href="https://www.facebook.com/profile.php?id=100087533434752&mibextid=LQQJ4d" title="facebook icons"><i class="bi bi-facebook"style="color:black"></i></a><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
+        <a class="link-body-emphasis" href="https://instagram.com/nidscrochet?igshid=OGQ5ZDc2ODk2ZA==" title="instagram icons"><i class="bi bi-instagram"style="color:black"></i><svg class="bi" width="24" height="24"><use xlink:href="#instagram"></use></svg></a></li>
+        <a class="link-body-emphasis" href="https://www.tiktok.com/@nids_crochet?_t=8fBxv7O5mfW&_r=1" title="tiktok icons"><i class="bi bi-tiktok"style="color:black"></i></a><svg class="bi" width="24" height="24"><use xlink:href="#tiktok"></use></svg></a></li>
+  
+      </footer>
+  </body>
+  </html>
